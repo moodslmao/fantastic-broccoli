@@ -1,5 +1,6 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
 const axios = require('axios');
+const {riotApi} = require('./riotApi.json')
 
 
 module.exports = {
@@ -19,7 +20,6 @@ module.exports = {
     async execute(interaction) {
         const riotId = interaction.options.getString('riot_id');
         const tagLine = interaction.options.getString('tagline');
-        const riotApi = 'RGAPI-5ab5320b-26ca-47de-9218-8fa8a242dd95'
 
         try {
             const accountResponse = await axios.get(`https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${riotId}/${tagLine}?api_key=${riotApi}`, {});

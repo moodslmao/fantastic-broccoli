@@ -1,5 +1,6 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
 const axios = require('axios');
+const {riotApi} = require('./riotApi.json')
 
 
 module.exports = {
@@ -21,10 +22,10 @@ module.exports = {
         const tagLine = interaction.options.getString('tagline');
 
         try {
-            const accountResponse = await axios.get(`https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${riotId}/${tagLine}?api_key=RGAPI-5ab5320b-26ca-47de-9218-8fa8a242dd95`, {});
+            const accountResponse = await axios.get(`https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${riotId}/${tagLine}?api_key=${riotApi}`, {});
             const puuid = accountResponse.data.puuid;
 
-            const summonerResponse = await axios.get(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=RGAPI-5ab5320b-26ca-47de-9218-8fa8a242dd95`, {});
+            const summonerResponse = await axios.get(`https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${riotApi}`, {});
             const summonerLevel = summonerResponse.data.summonerLevel;
 
             await interaction.reply(`Der Summoner ${riotId}#${tagLine} wurde gefunden. \n Level: ${summonerLevel} \n PUUID: ${puuid}`);
