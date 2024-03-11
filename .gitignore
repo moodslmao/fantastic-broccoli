@@ -12,4 +12,4 @@ database.prod.json
 config.dev.json
 config.prod.json
 riotApi.json
-riotAPIConfig.ts
+configs/riotAPIConfig.ts
