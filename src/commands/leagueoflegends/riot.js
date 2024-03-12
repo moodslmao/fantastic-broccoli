@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const riotApiService = require('../../src/services/riotApiService');
+const riotApiService = require('../../services/riotApiService');
 
 
 module.exports = {
