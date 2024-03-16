@@ -4,6 +4,7 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "league-api": "^2.0.0",
+    "mysql2": "^3.9.2",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
