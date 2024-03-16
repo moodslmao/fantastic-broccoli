@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const dbService = require('../../services/dbService');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,6 +15,17 @@ module.exports = {
             
             switch(subcommand) {
                 case 'create':
+					await interaction.reply('Erstelle Datenbank...');
+
+					try {
+						await dbService.createDatabase('beebot');
+						await interaction.editReply('Datenbank wurde erstellt.');
+					}
+					catch (error) {
+						console.error('Fehler bei der Datenbankoperation:', error);
+						await interaction.editReply('Es gab einen Fehler beim ausführen der Datenbank-Operation.');
+						return;
+					}
                     break;
             }
 		}
